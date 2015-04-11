@@ -83,8 +83,8 @@ module.exports = function(ctrl) {
         action : ctrl.go("store")
     }];
 
-    ctrl.grid[12].type = "bar";
-    ctrl.grid[12].actions = [{
+    ctrl.grid[24].type = "bar";
+    ctrl.grid[24].actions = [{
         name : "Enter",
         action : ctrl.go("bar")
     }, {
