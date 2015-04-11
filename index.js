@@ -2,11 +2,11 @@ var m = require("mithril");
 
 m.module(document.body, {
     view : function(ctrl) {
-        return ctrl.home(ctrl);
+        return ctrl.vgrid(ctrl);
     },
     controller : function() {
         var ctrl = this;
-
-        ctrl.home = require("./comps/home")(ctrl);
+        ctrl.vgrid = require("./comps/grid")(ctrl);
+        ctrl.vhome = require("./comps/home")(ctrl);
     }
 });

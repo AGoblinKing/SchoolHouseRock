@@ -3,6 +3,7 @@ html,body{
     height: 100%;
     overflow: hidden;
     margin: 0px;
+    display:flex;
     padding: 0px;
     background-color: black;
     font-family: 'Press Start 2P', cursive;
@@ -11,10 +12,18 @@ html,body{
 .flex {
     flex: 1;
 }
+
 .vbox {
     display: flex;
     flex-direction: column;
 }
+
+.grid {
+    flex: 1;
+    color: white;
+    border: 2px solid white;
+}
+
 .hbox {
     display: flex;
 }
