@@ -1,0 +1,46 @@
+html,body{
+    width : 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.flex {
+    flex: 1;
+}
+.vbox {
+    display: flex;
+    flex-direction: column;
+}
+.hbox {
+    display: flex;
+}
+.menu {
+    background: blue;
+    border: 5px solid white;
+    border-radius: 15px;
+    display: inline-block;
+    padding: 5px;
+}
+
+.menu .option {
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    padding-left: 20px;
+}
+
+.menu .option:hover {
+    color: yellow;
+    padding-left: 5px;
+}
+
+.menu .option:hover:before {
+    display: block;
+    content: ">";
+    width: 15px;
+    font-weight: bold;
+}
