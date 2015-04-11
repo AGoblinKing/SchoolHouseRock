@@ -4,6 +4,13 @@ html,body{
     overflow: hidden;
     margin: 0px;
     display:flex;
+    color: white;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     padding: 0px;
     background-color: black;
     font-family: 'Press Start 2P', cursive;
@@ -20,6 +27,10 @@ html,body{
 
 .grid {
     flex: 1;
+    justify-content:center;
+    align-items:center;
+    display:flex;
+    flex-direction: column;
     color: white;
     border: 2px solid white;
 }
@@ -27,19 +38,42 @@ html,body{
 .hbox {
     display: flex;
 }
+
+.special .menu {
+    background-color: green;
+}
+
 .menu {
     background: blue;
     border: 5px solid white;
     border-radius: 15px;
     display: inline-block;
     padding: 5px;
+    margin: 10px;
 }
 
 .menu .option {
     color: white;
     padding: 5px;
     cursor: pointer;
-    padding-left: 20px;
+    padding-left: 25px;
+}
+
+.home {
+    background-color: red;
+}
+.school {
+    background-color: antiquewhite;
+}
+.store {
+    background-color: beige;
+}
+.work {
+    background-color: floralwhite;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .menu .option:hover {
@@ -47,9 +81,98 @@ html,body{
     padding-left: 5px;
 }
 
+.center {
+    align-items: center;
+}
+
+.fill {
+    height: 100%;
+}
+
+.happiness .fill {
+    background-color: yellow;
+}
+
+.health .fill {
+    background-color: red;
+}
+.time .fill {
+    background-color: lightblue;
+}
 .menu .option:hover:before {
     display: block;
     content: ">";
-    width: 15px;
+    width: 20px;
     font-weight: bold;
+}
+
+.resource {
+    width: 300px;
+}
+
+.resource h3 {
+    flex: 1;
+}
+
+.grid.moveable {
+    background-color: darkslategray;
+    cursor: pointer;
+}
+.grid.moveable:hover {
+    -webkit-filter: sepia(1.0);
+}
+
+.grid .player {
+    width: 20px;
+    height: 20px;
+    background-color : aqua;
+    border-radius: 20px;
+}
+.bar {
+    width: 100px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid white;
+    background-color: black;
+}
+.resources {
+    margin: 10px;
+    background: rgba(255,255,255, 0.4);
+    border: 5px solid white;
+    color: white;
+    border-radius: 15px;
+    display: inline-block;
+    padding: 5px;
+}
+
+.events {
+    margin: 10px;
+    background: rgba(255,255,255, 0.4);
+    border: 5px solid white;
+    color: white;
+    border-radius: 15px;
+    line-height: 20px;
+    height: 20px;
+    padding: 5px;
+}
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
 }
