@@ -6,6 +6,7 @@ module.exports = function(ctrl) {
             case "health":
             case "happiness":
             case "time":
+            case "degree":
                 return m(".bar." + resource, [
                     m(".fill", {
                         style : {
@@ -41,10 +42,16 @@ module.exports = function(ctrl) {
         get health() {
             return this._health;
         },
-        happiness : 100,
+        _happiness : 100,
+        set happiness(happiness) {
+            this._happiness = Math.min(100, happiness);
+        },
+        get happiness() {
+            return this._happiness;
+        },
         set time(time) {
             this._time = time;
-            if(time === 0) {
+            if(time <= 0) {
                 this.day++;
                 this._time = 100;
                 this.health -= 20;
@@ -57,7 +64,17 @@ module.exports = function(ctrl) {
         },
         _time: 100,
         money : 100,
-        day : 0
+        _day : 0,
+        set day(day) {
+            this._day = day;
+            if(this.debt) {
+                this.debt += this.debt * 0.001;
+                this.debt = Math.floor(this.debt);
+            }
+        },
+        get day() {
+            return this._day;
+        }
     };
 
     return function(ctrl) {

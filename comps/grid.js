@@ -47,11 +47,10 @@ module.exports = function(ctrl) {
     }
 
     function movePlayer(grid) {
-        ctrl.type(r.one(["Vrrrrooooom!", "Brkkzzkkker", "Zug Zug"]));
-        ctrl.resources.money--;
-        ctrl.resources.time--;
-        ctrl.resources.health--;
-        ctrl.resources.happiness--;
+        ctrl.type(r.one(["Vrrrrooooom!", "kerrr plow", "Zug Zug"]));
+        ctrl.resources.time -= 10;
+        ctrl.resources.health -= 2;
+        ctrl.resources.happiness -= 4;
         ctrl.loc = grid.n;
         ctrl.actions = grid.actions || [];
     }
@@ -88,7 +87,10 @@ module.exports = function(ctrl) {
         name : "Enter",
         action : ctrl.go("bar")
     }, {
-        name : "Pee on wall"
+        name : "Pee on wall",
+        action : function() {
+            ctrl.type("You're gross...");
+        }
     }];
 
     return function(ctrl) {

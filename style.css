@@ -41,6 +41,7 @@ html,body{
 
 .special .menu {
     background-color: green;
+    overflow: auto;
 }
 
 .menu {

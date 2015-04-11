@@ -5,10 +5,20 @@ module.exports = function(ctrl) {
 
     return function(ctrl) {
         ctrl.actions =[{
-            name : "Buy",
+            name : "[Buy]",
             action : function() {
                 ctrl.special = [{
                     name : "$5 - Cheese Toes",
+                    action : function() {
+                        if(ctrl.resources.money > 5) {
+                            ctrl.type("Delicous, delicous cheesy toes");
+                            ctrl.resources.money -= 5;
+                            ctrl.resources.health += 10;
+                            ctrl.resources.happiness += 1;
+                        }
+                    }
+                }, {
+                    name : "$25 - Bus Pass",
                     action : function() {
                         if(ctrl.resources.money > 5) {
                             ctrl.type("Delicous, delicous cheesy toes");

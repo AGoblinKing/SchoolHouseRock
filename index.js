@@ -37,6 +37,7 @@ m.module(document.body, {
             };
         };
 
+        require("./comps/achievements")(ctrl);
         //ugh
         ctrl.vevents = require("./comps/events")(ctrl);
         ctrl.vresources = require("./comps/resources")(ctrl);
@@ -48,6 +49,7 @@ m.module(document.body, {
         ctrl["vgame-over"] = require("./comps/game-over")(ctrl);
         ctrl.vactions = require("./comps/actions")(ctrl);
         ctrl.vspecial = require("./comps/special")(ctrl);
+        ctrl.vbar = require("./comps/bar")(ctrl);
         ctrl["vpassed-out"] = require("./comps/passed-out")(ctrl);
     }
 });
