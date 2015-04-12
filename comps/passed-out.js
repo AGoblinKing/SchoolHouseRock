@@ -1,12 +1,22 @@
-var m = require("mithril");
+var m = require("mithril"),
+    r = require("./random");
 
 module.exports = function(ctrl) {
     return function(ctrl) {
         ctrl.actions =[{
-            name : "Get off the ground",
+            name : "Get up!",
             action : function() {
                 ctrl.go("grid")();
-                ctrl.type("You pick your sorry ass off the ground");
+                if(r.clamp(0, 100) <= 25) {
+                    ctrl.resources.money = 0;
+                    ctrl.type("Your wallet was taken while you were unconcious.");
+                    ctrl.unlocked.push("Robbed");
+                } else {
+                    ctrl.type(r.one([
+                        "You pick your sorry ass off the ground",
+                        "Sleeping on concrete sucks."
+                    ]));
+                }
             }
         }];
 

@@ -21,10 +21,10 @@ module.exports = function(ctrl) {
                 action : function() {
                     ctrl.resources.time -= 25;
                     ctrl.resources.degree += 5;
-                    ctrl.resources.happiness -= 10;
+                    ctrl.resources.happiness -= 15;
                 }
             }, {
-                name : "[ Pay Debt ]",
+                name : "[Pay Debt]",
                 action : function() {
                     ctrl.special = [{
                         name : "$10",

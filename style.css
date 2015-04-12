@@ -64,13 +64,16 @@ html,body{
     background-color: red;
 }
 .school {
-    background-color: antiquewhite;
+    background-image: url(./assets/bg-school.png);
+    background-position: center;
 }
 .store {
     background-color: beige;
 }
 .work {
-    background-color: floralwhite;
+    background-image: url(./assets/bg-work.png);
+    background-position: center;
+    background-repeat:no-repeat;
 }
 
 .text-center {
@@ -90,6 +93,9 @@ html,body{
     height: 100%;
 }
 
+.degree .fill {
+    background-color: green;
+}
 .happiness .fill {
     background-color: yellow;
 }
@@ -129,7 +135,7 @@ html,body{
     background-color : aqua;
     border-radius: 20px;
 }
-.bar {
+.rbar {
     width: 100px;
     height: 20px;
     border-radius: 5px;
@@ -161,6 +167,9 @@ html,body{
     -webkit-animation: blink 0.7s infinite;
     -moz-animation: blink 0.7s infinite;
     animation: blink 0.7s infinite;
+}
+.title {
+    text-align:center;
 }
 @keyframes blink{
     0% { opacity:1; }

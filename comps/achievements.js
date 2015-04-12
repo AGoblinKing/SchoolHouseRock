@@ -1,4 +1,4 @@
 module.exports = function(ctrl) {
-    ctrl.achievements = ["Got Drunk"];
+    ctrl.achievements = ["Drunk", "Robbed", "Criminal"];
     ctrl.unlocked = [];
 };

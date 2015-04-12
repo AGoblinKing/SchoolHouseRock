@@ -26,7 +26,7 @@ module.exports = function(ctrl) {
                             ctrl.type(r.one(["You had a real doosey of a night", "You'll regret that one in the morning."]));
                             ctrl.resources.money -= 25;
                             ctrl.resources.health -= 40;
-                            ctrl.unlocked.push("Got Drunk");
+                            ctrl.unlocked.push("Drunk");
                             ctrl.resources.happiness += 80;
                         }
                     }
