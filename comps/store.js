@@ -70,7 +70,7 @@ module.exports = function(ctrl) {
                         if(ctrl.resources.money > 5) {
                             ctrl.type("Delicous, delicous cheesy toes");
                             ctrl.resources.money -= 5;
-                            ctrl.resources.health += 10;
+                            ctrl.resources.health += 15;
                             ctrl.resources.happiness += 1;
                         } else {
                             ctrl.type("Low on health? No help here.");
