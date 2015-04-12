@@ -1,6 +1,9 @@
 var m = require("mithril"),
     r = require("./random");
 
+createjs.Sound.registerSound("assets/Audio/Sounds/PoliceSiren.mp3", "Siren");
+
+
 module.exports = function(ctrl) {
     ctrl.goText.store = ["You enter a decript mini-mart. Pick your poison."];
 
@@ -22,8 +25,9 @@ module.exports = function(ctrl) {
                             ctrl.resources.happiness += 20;
                             ctrl.unlocked.push("Criminal");
                         } else {
-                            ctrl.go("game-over")();
+                            createjs.Sound.play("Siren");
                             ctrl.type("A life in jail over Cheese Toes :(");
+                            ctrl.go("game-over")();
                         }
                     }
                 }, {
@@ -37,6 +41,7 @@ module.exports = function(ctrl) {
                             ctrl.unlocked.push("Criminal");
                         } else {
                             ctrl.go("game-over")();
+                            createjs.Sound.play("Siren");
                             ctrl.type("Really? I hope it was arabic. Caught!");
                         }
                     }
@@ -50,6 +55,7 @@ module.exports = function(ctrl) {
                             ctrl.unlocked.push("Criminal");
                         } else {
                             ctrl.go("game-over")();
+                            createjs.Sound.play("Siren");
                             ctrl.type("You got the bus, to Jail.");
                         }
                     }

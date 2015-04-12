@@ -1,7 +1,15 @@
 var m = require("mithril");
 
+createjs.Sound.registerSound("assets/Audio/Sounds/PrinterReadout.mp3", "TypeSound");
+
 module.exports = function(ctrl) {
     ctrl.type = function(typer) {
+        
+        
+        var sound_instance = createjs.Sound.play("TypeSound");
+        sound_instance.volume = 0.01;
+        
+        
         ctrl.typeScroll = "";
         clearTimeout(ctrl.typeTime);
         if(typer !== "") {
