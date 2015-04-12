@@ -20,7 +20,7 @@ m.module(document.body, {
     },
     controller : function() {
         var ctrl = this;
-
+        window.scrollTo(0,1);
         ctrl.location = "grid";
         ctrl.goText = {};
         ctrl.go = function(location) {

@@ -73,14 +73,24 @@ html,body{
     margin: 5px;
     border-radius: 25%;
 }
-
+/* latin */
+@font-face {
+  font-family: 'Indie Flower';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Indie Flower'), local('IndieFlower'), url(assets/handwriting.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
 .letter {
+    font-size: 1.5em;
     position: absolute;
     z-index: 5;
     width: 50%;
-    margin-top: 25%;
+    font-family: 'Indie Flower';
+    margin-top: 15%;
     color: black;
     padding: 25px;
+      margin-left: 25%;
     background-color: antiquewhite;
     border: 5px solid black;
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
