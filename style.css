@@ -242,7 +242,15 @@ h3 {
     100% { background-position: -192px; }
 }
 
-
+.gridName {
+    text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+    justify-content:flex-start;
+}
 .grid .player {
     -webkit-filter: brightness(2);
     background-image: url("assets/player.png");

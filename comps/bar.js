@@ -1,6 +1,9 @@
 var m = require("mithril"),
     r = require("./random");
 
+
+createjs.Sound.registerSound("assets/Audio/Sounds/drank.wav", "drank");
+
 module.exports = function(ctrl) {
     ctrl.goText.bar = ["The musty air could get to you..."];
 
@@ -17,6 +20,7 @@ module.exports = function(ctrl) {
                             ctrl.resources.money -= 10;
                             ctrl.resources.health -= 20;
                             ctrl.resources.happiness += 30;
+                            createjs.Sound.play("drank");
                         }
                     }
                 }, {
@@ -28,6 +32,7 @@ module.exports = function(ctrl) {
                             ctrl.resources.health -= 40;
                             ctrl.unlocked.push("Drunk");
                             ctrl.resources.happiness += 80;
+                            createjs.Sound.play("drank");
                         }
                     }
                 }]
