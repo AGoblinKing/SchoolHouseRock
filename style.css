@@ -84,7 +84,7 @@ html,body{
     background-color: antiquewhite;
     border: 5px solid black;
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-    transform: rotateZ(33deg);
+    transform: rotateZ(8deg);
 }
 
 .hbox {
