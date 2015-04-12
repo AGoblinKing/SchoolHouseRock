@@ -23,6 +23,9 @@ module.exports = function(ctrl) {
 var m = require("mithril"),
     r = require("./random");
 
+
+createjs.Sound.registerSound("assets/Audio/Sounds/drank.wav", "drank");
+
 module.exports = function(ctrl) {
     ctrl.goText.bar = ["The musty air could get to you..."];
 
@@ -39,6 +42,7 @@ module.exports = function(ctrl) {
                             ctrl.resources.money -= 10;
                             ctrl.resources.health -= 20;
                             ctrl.resources.happiness += 30;
+                            createjs.Sound.play("drank");
                         }
                     }
                 }, {
@@ -50,6 +54,7 @@ module.exports = function(ctrl) {
                             ctrl.resources.health -= 40;
                             ctrl.unlocked.push("Drunk");
                             ctrl.resources.happiness += 80;
+                            createjs.Sound.play("drank");
                         }
                     }
                 }]
@@ -66,16 +71,8 @@ module.exports = function(ctrl) {
 },{"./random":11,"mithril":18}],4:[function(require,module,exports){
 var m = require("mithril");
 
-createjs.Sound.registerSound("assets/Audio/Sounds/PrinterReadout.mp3", "TypeSound");
-
 module.exports = function(ctrl) {
     ctrl.type = function(typer) {
-        
-        
-        var sound_instance = createjs.Sound.play("TypeSound");
-        sound_instance.volume = 0.01;
-        
-        
         ctrl.typeScroll = "";
         clearTimeout(ctrl.typeTime);
         if(typer !== "") {
@@ -258,7 +255,7 @@ module.exports = function(ctrl) {
         ctrl.actions = [{
             name : "Sleep",
             action : function() {
-                ctrl.resources.health += 5;
+                ctrl.resources.health -= 5;
                 ctrl.resources.day += 1;
                 ctrl.resources.time = 100;
                 ctrl.type(r.one(["You get a solid night's rest", "Dawn of a new day!"]));
@@ -290,7 +287,7 @@ module.exports = function(ctrl) {
             onclick : function() {
                 ctrl.letter = false;
             }
-        }, m.trust("Congratulations on taking your first step toward adulthood, sweetie!<br/><br/> You’re finally all moved into your first apartment and all ready for school, and I have never been more proud of you. Just so you know, you won’t have to worry about rent for the first month, I paid it off so you could focus on your studying. <br/><br/>I want you to tell me all about what happens as soon as you can. I want to know it all! And, remember who your family is for when you get big and famous. <br/><br/>Best of luck! Love you! <br/><br/>" +
+        }, m.trust("Congratulations on getting into college, sweetie! <br/><br/>You’re finally all moved into your first apartment and all ready for school, and I have never been more proud of you.<br/><br/> So you don’t worry, I paid off your first month’s rent. Be sure to call and tell me everything that happens. <br/><br/>Best of luck! Love you! <br/><br/>" +
                "Love, Mom")) : "";
     };
 };
@@ -324,8 +321,11 @@ module.exports = function(opts, classes) {
 var m = require("mithril"),
     r = require("./random");
 
+createjs.Sound.registerSound("assets/Audio/Sounds/fall_down.wav", "fallDown");
+
 module.exports = function(ctrl) {
     return function(ctrl) {
+        createjs.Sound.play("fallDown");
         ctrl.actions =[{
             name : "Get up!",
             action : function() {
@@ -546,7 +546,8 @@ var m = require("mithril"),
     r = require("./random");
 
 createjs.Sound.registerSound("assets/Audio/Sounds/PoliceSiren.mp3", "Siren");
-
+createjs.Sound.registerSound("assets/Audio/Sounds/got_item.wav", "gotItem");
+createjs.Sound.registerSound("assets/Audio/Sounds/no_item.wav", "noItem");
 
 module.exports = function(ctrl) {
     ctrl.goText.store = ["You enter a decript mini-mart. Pick your poison."];
@@ -616,8 +617,10 @@ module.exports = function(ctrl) {
                             ctrl.resources.money -= 5;
                             ctrl.resources.health += 15;
                             ctrl.resources.happiness += 1;
+                            createjs.Sound.play("gotItem");
                         } else {
                             ctrl.type("Low on health? No help here.");
+                            createjs.Sound.play("noItem");
                         }
                     }
                 }, {
@@ -629,8 +632,10 @@ module.exports = function(ctrl) {
                             ctrl.resources.time += 10;
                             ctrl.resources.health -= 5;
                             ctrl.resources.happiness += 1;
+                            createjs.Sound.play("gotItem");
                         } else{
                             ctrl.type("You can't afford Coffee? Thats rough.");
+                            createjs.Sound.play("noItem");
                         }
                     }
                 }, {
@@ -641,8 +646,10 @@ module.exports = function(ctrl) {
                             ctrl.resources.money -= 25;
                             ctrl.resources.bus = 7;
                             ctrl.resources.happiness += 10;
+                            createjs.Sound.play("gotItem");
                         } else {
                             ctrl.type("Freeloader. You can't afford that.");
+                            createjs.Sound.play("noItem");
                         }
                     }
                 }];

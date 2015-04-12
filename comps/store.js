@@ -2,7 +2,8 @@ var m = require("mithril"),
     r = require("./random");
 
 createjs.Sound.registerSound("assets/Audio/Sounds/PoliceSiren.mp3", "Siren");
-
+createjs.Sound.registerSound("assets/Audio/Sounds/got_item.wav", "gotItem");
+createjs.Sound.registerSound("assets/Audio/Sounds/no_item.wav", "noItem");
 
 module.exports = function(ctrl) {
     ctrl.goText.store = ["You enter a decript mini-mart. Pick your poison."];
@@ -72,8 +73,10 @@ module.exports = function(ctrl) {
                             ctrl.resources.money -= 5;
                             ctrl.resources.health += 15;
                             ctrl.resources.happiness += 1;
+                            createjs.Sound.play("gotItem");
                         } else {
                             ctrl.type("Low on health? No help here.");
+                            createjs.Sound.play("noItem");
                         }
                     }
                 }, {
@@ -85,8 +88,10 @@ module.exports = function(ctrl) {
                             ctrl.resources.time += 10;
                             ctrl.resources.health -= 5;
                             ctrl.resources.happiness += 1;
+                            createjs.Sound.play("gotItem");
                         } else{
                             ctrl.type("You can't afford Coffee? Thats rough.");
+                            createjs.Sound.play("noItem");
                         }
                     }
                 }, {
@@ -97,8 +102,10 @@ module.exports = function(ctrl) {
                             ctrl.resources.money -= 25;
                             ctrl.resources.bus = 7;
                             ctrl.resources.happiness += 10;
+                            createjs.Sound.play("gotItem");
                         } else {
                             ctrl.type("Freeloader. You can't afford that.");
+                            createjs.Sound.play("noItem");
                         }
                     }
                 }];
