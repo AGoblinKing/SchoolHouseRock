@@ -8,7 +8,7 @@ m.module(document.body, {
                 ctrl["v" + ctrl.location](ctrl),
                 ctrl.vevents(ctrl)
             ]),
-            m(".vbox", [
+            m(".vbox.sidebar", [
                 ctrl.vresources(ctrl),
                 m(".flex", [
                     ctrl.vspecial(ctrl)

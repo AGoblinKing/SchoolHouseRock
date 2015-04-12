@@ -41,7 +41,6 @@ module.exports = function(ctrl) {
         } : {};
 
         return m(".grid.grid-" + grid.type, opts, [
-            grid.type || "",
             grid.n  === ctrl.loc ? m(".player") : ""
         ]);
     }
