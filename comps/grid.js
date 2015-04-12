@@ -40,17 +40,16 @@ module.exports = function(ctrl) {
             onclick : movePlayer.bind(null, grid)
         } : {};
 
-        return m(".grid", opts, [
-            grid.type || "",
+        return m(".grid.grid-" + grid.type, opts, [
             grid.n  === ctrl.loc ? m(".player") : ""
         ]);
     }
 
     function movePlayer(grid) {
         ctrl.type(r.one(["Vrrrrooooom!", "kerrr plow", "Zug Zug"]));
-        ctrl.resources.time -= 10;
+        ctrl.resources.time -= ctrl.resources.bus ? 1 : 10;
         ctrl.resources.health -= 2;
-        ctrl.resources.happiness -= 4;
+        ctrl.resources.happiness -= 2;
         ctrl.loc = grid.n;
         ctrl.actions = grid.actions || [];
     }
@@ -67,7 +66,10 @@ module.exports = function(ctrl) {
     ctrl.grid[9].type = "work";
     ctrl.grid[9].actions = [{
         name : "Enter",
-        action : ctrl.go("work")
+        action : function() {
+            ctrl.go("work")();
+            ctrl.type("Another day...another dollar");
+        }
     }];
 
     ctrl.grid[20].type = "home";
