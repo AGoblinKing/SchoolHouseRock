@@ -1,7 +1,12 @@
 var m = require("mithril"),
     r = require("./comps/random");
 
+
+
 m.module(document.body, {
+    
+
+    
     view : function(ctrl) {
         return m(".hbox.flex", [
             ctrl.vletter(ctrl),
@@ -21,6 +26,11 @@ m.module(document.body, {
     controller : function() {
         var ctrl = this;
         window.scrollTo(0,1);
+        createjs.Sound.registerSound("assets/Audio/Sounds/PoliceSiren.mp3", "overworld");
+        createjs.Sound.play("overworld");
+    
+        
+        
         ctrl.location = "grid";
         ctrl.goText = {};
         ctrl.go = function(location) {
