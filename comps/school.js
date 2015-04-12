@@ -31,6 +31,7 @@ module.exports = function(ctrl) {
                         action : function() {
                             if(ctrl.resources.money >= 10) {
                                 ctrl.resources.money -= 10;
+                                ctrl.resources.debt -= 10;
                             }
                         }
                     },{
@@ -38,6 +39,7 @@ module.exports = function(ctrl) {
                         action : function() {
                             if(ctrl.resources.money >= 100) {
                                 ctrl.resources.money -= 100;
+                                ctrl.resources.debt -= 100;
                             }
                         }
                     },{
@@ -45,6 +47,7 @@ module.exports = function(ctrl) {
                         action : function() {
                             if(ctrl.resources.money >= 1000) {
                                 ctrl.resources.money -= 1000;
+                                ctrl.resources.debt -= 1000;
                             }
                         }
                     }];

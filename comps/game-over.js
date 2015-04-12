@@ -17,7 +17,7 @@ module.exports = function(ctrl) {
         }];
 
         return m(".flex.game_over.center", [
-            m("h1", "Game Over, man. Game Over.")
+            m("h1.text-over", "Game Over, man. Game Over.")
         ]);
     };
 };

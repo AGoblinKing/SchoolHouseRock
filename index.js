@@ -4,6 +4,7 @@ var m = require("mithril"),
 m.module(document.body, {
     view : function(ctrl) {
         return m(".hbox.flex", [
+            ctrl.vletter(ctrl),
             m(".vbox.flex", [
                 ctrl["v" + ctrl.location](ctrl),
                 ctrl.vevents(ctrl)
@@ -39,6 +40,7 @@ m.module(document.body, {
 
         require("./comps/achievements")(ctrl);
         //ugh
+        ctrl.vletter = require("./comps/letter")(ctrl);
         ctrl.vevents = require("./comps/events")(ctrl);
         ctrl.vresources = require("./comps/resources")(ctrl);
         ctrl.vgrid = require("./comps/grid")(ctrl);
