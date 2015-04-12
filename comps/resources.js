@@ -1,12 +1,19 @@
-var m = require("mithril");
+var m = require("mithril"),
+    r = require("./random");
 
 module.exports = function(ctrl) {
+    var resourceText = {
+        time : "Exhaustion",
+        bus : "Bus Pass Days"
+    };
+
     function makeChart(resource) {
         switch(resource) {
             case "health":
             case "happiness":
             case "time":
-                return m(".bar." + resource, [
+            case "degree":
+                return m(".rbar." + resource, [
                     m(".fill", {
                         style : {
                             width : ctrl.resources[resource] + "%"
@@ -24,7 +31,7 @@ module.exports = function(ctrl) {
 
     function makeResource(resource) {
         return m(".resource.center.hbox", [
-            m("h3", resource),
+            m("h3", resourceText[resource] || resource),
             makeChart(resource)
         ]);
     }
@@ -41,15 +48,26 @@ module.exports = function(ctrl) {
         get health() {
             return this._health;
         },
-        happiness : 100,
+        _happiness : 100,
+        set happiness(happiness) {
+            this._happiness = Math.min(100, happiness);
+            if(this._happiness <= 0) {
+                ctrl.go("game-over")();
+                ctrl.type("In a fit of depression, its now game-over.");
+            }
+        },
+        get happiness() {
+            return this._happiness;
+        },
         set time(time) {
-            this._time = time;
-            if(time === 0) {
+            this._time = Math.min(100, time);
+            if(time <= 0) {
                 this.day++;
                 this._time = 100;
-                this.health -= 20;
+                this.happiness -= 20;
+                this.health -= 25;
                 ctrl.go("passed-out")();
-                ctrl.type("You've collapsed in a fit of exhaustion. :(");
+                ctrl.type(r.one(["You've collapsed in a fit of exhaustion. :("]));
             }
         },
         get time() {
@@ -57,12 +75,28 @@ module.exports = function(ctrl) {
         },
         _time: 100,
         money : 100,
-        day : 0
+        _day : 0,
+        set day(day) {
+            this._day = day;
+            if(this.bus > 0) {
+                this.bus--;
+            }
+            if(this.debt) {
+                this.debt += this.debt * 0.001;
+                this.debt = Math.floor(this.debt);
+            }
+        },
+        get day() {
+            return this._day;
+        }
     };
 
     return function(ctrl) {
-        return m(".resources", Object.keys(ctrl.resources).filter(function(res) {
-            return res[0] !== "_";
-        }).map(makeResource));
+        return m(".vbox", [
+            m(".title","CollegeQuest"),
+            m(".resources", Object.keys(ctrl.resources).filter(function(res) {
+                return res[0] !== "_";
+            }).map(makeResource))
+        ]);
     };
 };

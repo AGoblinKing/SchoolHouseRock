@@ -1,3 +1,36 @@
+/* cyrillic */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Press Start 2P'), local('PressStart2P-Regular'), src: local('Press Start 2P'), local('PressStart2P-Regular'), url(assets/start.ttf) format('ttf');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Press Start 2P'), local('PressStart2P-Regular'), src: local('Press Start 2P'), local('PressStart2P-Regular'), url(assets/start.ttf) format('ttf');
+  unicode-range: U+0370-03FF;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Press Start 2P'), local('PressStart2P-Regular'), src: local('Press Start 2P'), local('PressStart2P-Regular'), url(assets/start.ttf) format('ttf');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Press Start 2P'), local('PressStart2P-Regular'), url(assets/start.ttf) format('ttf');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
 html,body{
     width : 100%;
     height: 100%;
@@ -32,7 +65,7 @@ html,body{
     display:flex;
     flex-direction: column;
     color: white;
-    border: 2px solid white;
+    border: 2px dotted white;
 }
 
 .hbox {
@@ -41,6 +74,7 @@ html,body{
 
 .special .menu {
     background-color: green;
+    overflow: auto;
 }
 
 .menu {
@@ -60,16 +94,21 @@ html,body{
 }
 
 .home {
-    background-color: red;
+    background-image: url(./assets/bg-home.png);
+    background-position: center;
+    background-repeat:no-repeat;
 }
 .school {
-    background-color: antiquewhite;
+    background-image: url(./assets/bg-school.png);
+    background-position: center;
 }
 .store {
     background-color: beige;
 }
 .work {
-    background-color: floralwhite;
+    background-image: url(./assets/bg-work.png);
+    background-position: center;
+    background-repeat:no-repeat;
 }
 
 .text-center {
@@ -89,6 +128,9 @@ html,body{
     height: 100%;
 }
 
+.degree .fill {
+    background-color: green;
+}
 .happiness .fill {
     background-color: yellow;
 }
@@ -113,22 +155,42 @@ html,body{
 .resource h3 {
     flex: 1;
 }
+.grid.grid-home {
+    background-image: url("assets/grid-house.png");
+}
+.grid {
+    background-image: url("assets/grid-street.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
 
+
+@-webkit-keyframes sepia {
+    0% { -webkit-filter: sepia(.8); }
+    100% { -webkit-filter: sepia(.3); }
+}
 .grid.moveable {
-    background-color: darkslategray;
+    -webkit-animation: sepia .8s infinite alternate;
     cursor: pointer;
 }
 .grid.moveable:hover {
     -webkit-filter: sepia(1.0);
 }
+@-webkit-keyframes step {
+    100% { background-position: -192px; }
+}
+
 
 .grid .player {
-    width: 20px;
-    height: 20px;
-    background-color : aqua;
-    border-radius: 20px;
+    -webkit-filter: brightness(2);
+    background-image: url("assets/player.png");
+    width: 64px;
+    height: 64px;
+    -webkit-animation: step .8s steps(3);
 }
-.bar {
+
+
+.rbar {
     width: 100px;
     height: 20px;
     border-radius: 5px;
@@ -160,6 +222,9 @@ html,body{
     -webkit-animation: blink 0.7s infinite;
     -moz-animation: blink 0.7s infinite;
     animation: blink 0.7s infinite;
+}
+.title {
+    text-align:center;
 }
 @keyframes blink{
     0% { opacity:1; }
