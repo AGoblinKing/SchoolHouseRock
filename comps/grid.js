@@ -40,7 +40,7 @@ module.exports = function(ctrl) {
             onclick : movePlayer.bind(null, grid)
         } : {};
 
-        return m(".grid", opts, [
+        return m(".grid.grid-" + grid.type, opts, [
             grid.type || "",
             grid.n  === ctrl.loc ? m(".player") : ""
         ]);
