@@ -2,7 +2,6 @@ var m = require("mithril");
 
 module.exports = function(ctrl) {
     return function(ctrl) {
-
         ctrl.specialName = "Achievements";
         ctrl.special = ctrl.achievements.map(function(achievement) {
             return {
