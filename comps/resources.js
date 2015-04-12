@@ -3,7 +3,7 @@ var m = require("mithril"),
 
 module.exports = function(ctrl) {
     var resourceText = {
-        time : "Exhaustion",
+        time : "Energy",
         bus : "Bus Pass Days"
     };
 

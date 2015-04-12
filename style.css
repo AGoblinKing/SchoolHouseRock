@@ -65,7 +65,8 @@ html,body{
     display:flex;
     flex-direction: column;
     color: white;
-    border: 2px dotted white;
+    margin: 5px;
+    border-radius: 25%;
 }
 
 .hbox {
@@ -108,7 +109,8 @@ html,body{
     background-position: center;
 }
 .store {
-    background-color: beige;
+    background-image: url(./assets/bg-store.png);
+    background-position: center;
 }
 .work {
     background-image: url(./assets/bg-work.png);
@@ -119,7 +121,13 @@ html,body{
 @media (max-width: 800px) {
   .sidebar .resource {
       width: 100px;
+
   }
+    .sidebar {
+        overflow:auto;
+    }
+
+
 }
 .text-center {
     text-align: center;
