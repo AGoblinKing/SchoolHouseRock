@@ -98,6 +98,11 @@ html,body{
     background-position: center;
     background-repeat:no-repeat;
 }
+.bar {
+    background-image: url(./assets/bg-bar.png);
+    background-position: center;
+    background-repeat:no-repeat;
+}
 .school {
     background-image: url(./assets/bg-school.png);
     background-position: center;
@@ -111,6 +116,11 @@ html,body{
     background-repeat:no-repeat;
 }
 
+@media (max-width: 800px) {
+  .sidebar .resource {
+      width: 100px;
+  }
+}
 .text-center {
     text-align: center;
 }
@@ -157,6 +167,18 @@ html,body{
 }
 .grid.grid-home {
     background-image: url("assets/grid-house.png");
+}
+.grid.grid-bar {
+    background-image: url("assets/grid-bar.png");
+}
+.grid.grid-school {
+    background-image: url("assets/grid-school.png");
+}
+.grid.grid-store {
+    background-image: url("assets/grid-store.png");
+}
+.grid.grid-work {
+    background-image: url("assets/grid-work.png");
 }
 .grid {
     background-image: url("assets/grid-street.png");
