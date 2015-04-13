@@ -10,15 +10,18 @@ http://schoolhouserock.github.io/SchoolHouseRock
 Game Design && Art
 ----
   Brady Winter
-  [http://bythewinterfire.com]
+  
+  http://bythewinterfire.com
   
 Programming && Art
 ----
   Joshua Galvin
-  [http://galv.us]
+  
+  http://galv.us
   
 Music
 ----
   Evan Witt
-  [http://www.WittyNotes.com]
+  
+  http://www.WittyNotes.com
 
