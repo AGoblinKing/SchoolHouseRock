@@ -61,10 +61,6 @@ module.exports = function(ctrl) {
     }
 
     createjs.Sound.registerSound("assets/Audio/Music/temp.mp3", "overworld");
-    createjs.Sound.on("fileload", function(){
-            sound_in = createjs.Sound.play("overworld", {loop:-1});
-            sound_in.setVolume(0.3)
-        }); // call handleLoad when each sound loads
 
 
     ctrl.loc = 20;
