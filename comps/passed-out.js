@@ -1,8 +1,11 @@
 var m = require("mithril"),
     r = require("./random");
 
+createjs.Sound.registerSound("assets/Audio/Sounds/fall_down.wav", "fallDown");
+
 module.exports = function(ctrl) {
     return function(ctrl) {
+        createjs.Sound.play("fallDown");
         ctrl.actions =[{
             name : "Get up!",
             action : function() {

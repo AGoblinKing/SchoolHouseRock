@@ -1,23 +1,9 @@
 var m = require("mithril"),
     r = require("./random");
 
-var soundID = "Button";
-
-
-
-
 module.exports = function(ctrl) {
-    
-    createjs.Sound.registerSound("assets/Audio/Sounds/Footsteps1.mp3", soundID);
-    
+    createjs.Sound.registerSound("assets/Audio/Sounds/Footsteps1.mp3", "Button");
 
-    
-        
-    function playSound() {
-     
-        createjs.Sound.play(soundID);
-    }
-    
     function makeArr(num) {
         var arr = [];
         for(var i = 0; i < num; i++) {
@@ -50,7 +36,6 @@ module.exports = function(ctrl) {
     }
 
     function makeGrid(grid) {
-        
         grid = grid || {};
         var opts = nearPlayer(grid) ? {
             class : "moveable",
@@ -58,28 +43,29 @@ module.exports = function(ctrl) {
         } : {};
 
         return m(".grid.grid-" + grid.type, opts, [
+            grid.type && grid.n !== ctrl.loc ? m(".gridName", grid.type) : "",
             grid.n  === ctrl.loc ? m(".player") : ""
         ]);
     }
 
     function movePlayer(grid) {
-        playSound();
-        
+        createjs.Sound.play("Button");
+
         ctrl.type(r.one(["Vrrooooom!", "kerr plow", "Zug Zug!"]));
         ctrl.resources.time -= ctrl.resources.bus ? 1 : 10;
         ctrl.resources.health -= 2;
         ctrl.resources.happiness -= 2;
         ctrl.loc = grid.n;
         ctrl.actions = grid.actions || [];
-        
+        ctrl.actionsName = grid.type ? grid.type : "";
     }
-    
+
     createjs.Sound.registerSound("assets/Audio/Music/temp.mp3", "overworld");
     createjs.Sound.on("fileload", function(){
             sound_in = createjs.Sound.play("overworld", {loop:-1});
             sound_in.setVolume(0.3)
         }); // call handleLoad when each sound loads
-    
+
 
     ctrl.loc = 20;
     ctrl.grid = makeArr(25);

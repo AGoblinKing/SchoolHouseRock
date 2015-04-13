@@ -8,7 +8,7 @@ module.exports = function(ctrl) {
         ctrl.actions = [{
             name : "Sleep",
             action : function() {
-                ctrl.resources.health += 5;
+                ctrl.resources.health -= 5;
                 ctrl.resources.day += 1;
                 ctrl.resources.time = 100;
                 ctrl.type(r.one(["You get a solid night's rest", "Dawn of a new day!"]));
