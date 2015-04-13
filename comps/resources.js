@@ -1,6 +1,13 @@
 var m = require("mithril"),
     r = require("./random");
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 module.exports = function(ctrl) {
     var resourceText = {
         time : "Energy",
@@ -74,7 +81,7 @@ module.exports = function(ctrl) {
             return this._time;
         },
         _time: 100,
-        money : 100,
+        money : getParameterByName("start") ? getParameterByName("start"): 100,
         _day : 0,
         set day(day) {
             this._day = day;

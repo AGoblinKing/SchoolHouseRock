@@ -140,7 +140,12 @@ html,body{
 }
 .passed-out {
     background-image: url("assets/bg-passed-out.png");
-        background-position: center;
+    background-position: center;
+    background-repeat:no-repeat;
+}
+.drunk {
+    background-image: url("assets/bg-drunk.png");
+    background-position: center;
     background-repeat:no-repeat;
 }
 .bar {

@@ -19,7 +19,7 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"./menu":9,"mithril":18}],3:[function(require,module,exports){
+},{"./menu":10,"mithril":19}],3:[function(require,module,exports){
 var m = require("mithril"),
     r = require("./random");
 
@@ -49,11 +49,13 @@ module.exports = function(ctrl) {
                     name : "$25 Real Banger",
                     action : function() {
                         if(ctrl.resources.money >= 25) {
+                            ctrl.go("drunk")();
                             ctrl.type(r.one(["You had a real doosey of a night", "You'll regret that one in the morning."]));
                             ctrl.resources.money -= 25;
                             ctrl.resources.health -= 40;
                             ctrl.unlocked.push("Drunk");
                             ctrl.resources.happiness += 80;
+
                             createjs.Sound.play("drank");
                         }
                     }
@@ -68,7 +70,36 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"./random":11,"mithril":18}],4:[function(require,module,exports){
+},{"./random":12,"mithril":19}],4:[function(require,module,exports){
+var m = require("mithril"),
+    r = require("./random");
+
+module.exports = function(ctrl) {
+    return function(ctrl) {
+        createjs.Sound.play("fallDown").setVolume(.5);
+
+        ctrl.actions =[{
+            name : "Sobering... Up.",
+            action : function() {
+                ctrl.go("grid")();
+                if(r.clamp(0, 100) <= 5) {
+                    ctrl.resources.money = 0;
+                    ctrl.type("Your wallet was taken while you were drunk.");
+                    ctrl.unlocked.push("Robbed");
+                } else {
+                    ctrl.type(r.one([
+                        "You pick your sorry ass off the ground",
+                        "Ugh what was that truck?"
+                    ]));
+                }
+            }
+        }];
+
+        return m(".flex.drunk");
+    };
+};
+
+},{"./random":12,"mithril":19}],5:[function(require,module,exports){
 var m = require("mithril");
 
 module.exports = function(ctrl) {
@@ -96,7 +127,7 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"mithril":18}],5:[function(require,module,exports){
+},{"mithril":19}],6:[function(require,module,exports){
 var m = require("mithril");
 
 module.exports = function(ctrl) {
@@ -113,6 +144,11 @@ module.exports = function(ctrl) {
             action : function() {
                 window.location.reload();
             }
+        }, {
+            name : "Restart Rich",
+            action : function() {
+                window.location = window.location + "?start=10000";
+            }
         }];
 
         return m(".flex.game_over.center", [
@@ -121,7 +157,7 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"mithril":18}],6:[function(require,module,exports){
+},{"mithril":19}],7:[function(require,module,exports){
 var m = require("mithril"),
     r = require("./random");
 
@@ -240,7 +276,7 @@ module.exports = function(ctrl) {
 };
 
 
-},{"./random":11,"mithril":18}],7:[function(require,module,exports){
+},{"./random":12,"mithril":19}],8:[function(require,module,exports){
 var m = require("mithril"),
     r = require("./random");
 
@@ -273,7 +309,7 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"./random":11,"mithril":18}],8:[function(require,module,exports){
+},{"./random":12,"mithril":19}],9:[function(require,module,exports){
 var m = require("mithril");
 
 module.exports = function(ctrl) {
@@ -297,7 +333,7 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"mithril":18}],9:[function(require,module,exports){
+},{"mithril":19}],10:[function(require,module,exports){
 var m = require("mithril");
 
 createjs.Sound.registerSound("assets/Audio/Sounds/ButtonPress.mp3", "ClickButton");
@@ -322,7 +358,7 @@ module.exports = function(opts, classes) {
     }, opts.map(makeOpt));
 };
 
-},{"mithril":18}],10:[function(require,module,exports){
+},{"mithril":19}],11:[function(require,module,exports){
 var m = require("mithril"),
     r = require("./random");
 
@@ -352,7 +388,7 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"./random":11,"mithril":18}],11:[function(require,module,exports){
+},{"./random":12,"mithril":19}],12:[function(require,module,exports){
 module.exports = {
     clamp : function(min, max) {
         return Math.round(Math.random()*max);
@@ -362,9 +398,16 @@ module.exports = {
     }
 };
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var m = require("mithril"),
     r = require("./random");
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
 module.exports = function(ctrl) {
     var resourceText = {
@@ -439,7 +482,7 @@ module.exports = function(ctrl) {
             return this._time;
         },
         _time: 100,
-        money : 100,
+        money : getParameterByName("start") ? getParameterByName("start"): 100,
         _day : 0,
         set day(day) {
             this._day = day;
@@ -466,7 +509,7 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"./random":11,"mithril":18}],13:[function(require,module,exports){
+},{"./random":12,"mithril":19}],14:[function(require,module,exports){
 var m = require("mithril");
 
 module.exports = function(ctrl) {
@@ -530,7 +573,7 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"mithril":18}],14:[function(require,module,exports){
+},{"mithril":19}],15:[function(require,module,exports){
 var m = require("mithril"),
     menu = require("./menu");
 
@@ -546,7 +589,7 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"./menu":9,"mithril":18}],15:[function(require,module,exports){
+},{"./menu":10,"mithril":19}],16:[function(require,module,exports){
 var m = require("mithril"),
     r = require("./random");
 
@@ -670,7 +713,7 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"./random":11,"mithril":18}],16:[function(require,module,exports){
+},{"./random":12,"mithril":19}],17:[function(require,module,exports){
 var m = require("mithril"),
     r = require("./random");
 
@@ -703,7 +746,7 @@ module.exports = function(ctrl) {
     };
 };
 
-},{"./random":11,"mithril":18}],17:[function(require,module,exports){
+},{"./random":12,"mithril":19}],18:[function(require,module,exports){
 var m = require("mithril"),
     r = require("./comps/random");
 
@@ -761,11 +804,12 @@ m.module(document.body, {
         ctrl.vactions = require("./comps/actions")(ctrl);
         ctrl.vspecial = require("./comps/special")(ctrl);
         ctrl.vbar = require("./comps/bar")(ctrl);
+        ctrl.vdrunk = require("./comps/drunk")(ctrl);
         ctrl["vpassed-out"] = require("./comps/passed-out")(ctrl);
     }
 });
 
-},{"./comps/achievements":1,"./comps/actions":2,"./comps/bar":3,"./comps/events":4,"./comps/game-over":5,"./comps/grid":6,"./comps/home":7,"./comps/letter":8,"./comps/passed-out":10,"./comps/random":11,"./comps/resources":12,"./comps/school":13,"./comps/special":14,"./comps/store":15,"./comps/work":16,"mithril":18}],18:[function(require,module,exports){
+},{"./comps/achievements":1,"./comps/actions":2,"./comps/bar":3,"./comps/drunk":4,"./comps/events":5,"./comps/game-over":6,"./comps/grid":7,"./comps/home":8,"./comps/letter":9,"./comps/passed-out":11,"./comps/random":12,"./comps/resources":13,"./comps/school":14,"./comps/special":15,"./comps/store":16,"./comps/work":17,"mithril":19}],19:[function(require,module,exports){
 var m = (function app(window, undefined) {
 	var OBJECT = "[object Object]", ARRAY = "[object Array]", STRING = "[object String]", FUNCTION = "function";
 	var type = {}.toString;
@@ -1833,4 +1877,4 @@ var m = (function app(window, undefined) {
 if (typeof module != "undefined" && module !== null && module.exports) module.exports = m;
 else if (typeof define === "function" && define.amd) define(function() {return m});
 
-},{}]},{},[17]);
+},{}]},{},[18]);
