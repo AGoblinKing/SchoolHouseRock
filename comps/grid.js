@@ -60,7 +60,7 @@ module.exports = function(ctrl) {
         ctrl.actionsName = grid.type ? grid.type : "";
     }
 
-    createjs.Sound.registerSound("assets/Audio/Music/temp.mp3", "overworld");
+    createjs.Sound.registerSound("assets/Audio/Music/BitCollegeBlues.mp3", "overworld");
 
 
     ctrl.loc = 20;

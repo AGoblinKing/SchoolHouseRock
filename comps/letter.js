@@ -12,7 +12,7 @@ module.exports = function(ctrl) {
                 if(ctrl.letter !== "dontcare") {
                     ctrl.letter = "dontcare";
                     var sound_in = createjs.Sound.play("overworld", {loop:-1});
-                    sound_in.setVolume(0.2);
+                    sound_in.setVolume(0.7);
                 }
             },
             class : ctrl.letter
