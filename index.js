@@ -55,6 +55,7 @@ m.module(document.body, {
         ctrl.vactions = require("./comps/actions")(ctrl);
         ctrl.vspecial = require("./comps/special")(ctrl);
         ctrl.vbar = require("./comps/bar")(ctrl);
+        ctrl.vdrunk = require("./comps/drunk")(ctrl);
         ctrl["vpassed-out"] = require("./comps/passed-out")(ctrl);
     }
 });

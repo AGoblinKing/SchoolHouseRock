@@ -14,6 +14,11 @@ module.exports = function(ctrl) {
             action : function() {
                 window.location.reload();
             }
+        }, {
+            name : "Restart Rich",
+            action : function() {
+                window.location = window.location + "?start=10000";
+            }
         }];
 
         return m(".flex.game_over.center", [
