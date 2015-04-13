@@ -5,7 +5,7 @@ createjs.Sound.registerSound("assets/Audio/Sounds/fall_down.wav", "fallDown");
 
 module.exports = function(ctrl) {
     return function(ctrl) {
-        createjs.Sound.play("fallDown");
+        createjs.Sound.play("fallDown").setVolume(.5);
         ctrl.actions =[{
             name : "Get up!",
             action : function() {

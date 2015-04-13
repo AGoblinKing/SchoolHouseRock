@@ -184,11 +184,7 @@ module.exports = function(ctrl) {
         ctrl.actionsName = grid.type ? grid.type : "";
     }
 
-    createjs.Sound.registerSound("assets/Audio/Music/temp.mp3", "overworld");
-    createjs.Sound.on("fileload", function(){
-            sound_in = createjs.Sound.play("overworld", {loop:-1});
-            sound_in.setVolume(0.3)
-        }); // call handleLoad when each sound loads
+    createjs.Sound.registerSound("assets/Audio/Music/BitCollegeBlues.mp3", "overworld");
 
 
     ctrl.loc = 20;
@@ -289,7 +285,11 @@ module.exports = function(ctrl) {
     return function(ctrl) {
         return ctrl.letter ? m(".letter", {
             onclick : function() {
-                ctrl.letter = "dontcare";
+                if(ctrl.letter !== "dontcare") {
+                    ctrl.letter = "dontcare";
+                    var sound_in = createjs.Sound.play("overworld", {loop:-1});
+                    sound_in.setVolume(0.7);
+                }
             },
             class : ctrl.letter
         }, m.trust("Congratulations on getting into college, sweetie! <br/><br/>You’re finally all moved into your first apartment and all ready for school, and I have never been more proud of you.<br/><br/> So you don’t worry, I paid off your first month’s rent. Be sure to call and tell me everything that happens. <br/><br/>Best of luck! Love you! <br/>" +
@@ -330,7 +330,7 @@ createjs.Sound.registerSound("assets/Audio/Sounds/fall_down.wav", "fallDown");
 
 module.exports = function(ctrl) {
     return function(ctrl) {
-        createjs.Sound.play("fallDown");
+        createjs.Sound.play("fallDown").setVolume(.5);
         ctrl.actions =[{
             name : "Get up!",
             action : function() {
