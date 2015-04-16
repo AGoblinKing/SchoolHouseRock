@@ -1,7 +1,10 @@
 var m = require("mithril");
 
+createjs.Sound.registerSound("assets/Audio/Music/EndingStinger.mp3", "end");
 module.exports = function(ctrl) {
     return function(ctrl) {
+        createjs.Sound.play("end");
+        window.sound_in.stop();
         ctrl.specialName = "Achievements";
         ctrl.special = ctrl.achievements.map(function(achievement) {
             return {

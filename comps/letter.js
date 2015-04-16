@@ -11,7 +11,7 @@ module.exports = function(ctrl) {
             onclick : function() {
                 if(ctrl.letter !== "dontcare") {
                     ctrl.letter = "dontcare";
-                    var sound_in = createjs.Sound.play("overworld", {loop:-1});
+                    window.sound_in = createjs.Sound.play("overworld", {loop:-1});
                     sound_in.setVolume(0.7);
                 }
             },
