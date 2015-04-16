@@ -130,8 +130,11 @@ module.exports = function(ctrl) {
 },{"mithril":19}],6:[function(require,module,exports){
 var m = require("mithril");
 
+createjs.Sound.registerSound("assets/Audio/Music/EndingStinger.mp3", "end");
 module.exports = function(ctrl) {
     return function(ctrl) {
+        createjs.Sound.play("end");
+        window.sound_in.stop();
         ctrl.specialName = "Achievements";
         ctrl.special = ctrl.achievements.map(function(achievement) {
             return {
@@ -323,7 +326,7 @@ module.exports = function(ctrl) {
             onclick : function() {
                 if(ctrl.letter !== "dontcare") {
                     ctrl.letter = "dontcare";
-                    var sound_in = createjs.Sound.play("overworld", {loop:-1});
+                    window.sound_in = createjs.Sound.play("overworld", {loop:-1});
                     sound_in.setVolume(0.7);
                 }
             },

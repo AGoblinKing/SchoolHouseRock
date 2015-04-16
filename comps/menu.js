@@ -7,11 +7,9 @@ function makeOpt(opt) {
     return m(".option.hbox", {
         onclick : function(){
             createjs.Sound.play("ClickButton");
-            opt.action();     
+            opt.action();
         },
         onmouseover : createjs.Sound.play.bind(null, "ButtonMouseOver")
-        
-        
     }, opt.name);
 };
 
